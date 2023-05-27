@@ -1,0 +1,40 @@
+{
+  "name": "arco_demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@arco-design/web-vue": "^2.43.2",
+    "animate.css": "^4.1.1",
+    "axios": "^1.3.4",
+    "bootstrap": "^5.2.3",
+    "core-js": "^3.8.3",
+    "md-editor-v3": "^2.11.2",
+    "nprogress": "^0.2.0",
+    "qalendar": "^2.5.0",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.1.0",
+    "vuex-persistedstate": "^4.1.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.2/xlsx-0.19.2.tgz"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.46.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "jquery": "^3.6.4",
+    "sass": "^1.59.3",
+    "sass-loader": "^12.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
