@@ -7,3 +7,5 @@ export const applicant_register = (data) => http.POST('/api/user/applicant/regis
 export const applicant_infos = (data) => http.POST('/api/user/applicant/getInfo/'+data)
 
 export const applicant_saveChanges = (data) => http.POST('/api/user/applicant/saveChange', data)
+
+export const applicant_getMAjors= (data) => http.POST('/api/auth/register', data)

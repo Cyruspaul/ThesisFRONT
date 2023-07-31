@@ -3,9 +3,11 @@
 </template>
 
 <script>
+import router from "@/router";
+
 export default {
   name: "JWXT",
-  mounted:{
+  mounted(){
     router.push('dashboard')
   }
 }

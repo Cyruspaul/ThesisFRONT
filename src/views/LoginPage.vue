@@ -30,7 +30,7 @@
         </a-form>
         <div class="w-100 d-flex justify-content-end py-4">
 <!--          <a-button :hoverable="false" href="/recover" type="text">密码找回</a-button>-->
-          <a-button type="text" @click="this.visible = true"  :hoverable="false"   >注册</a-button>
+          <a-button type="text" @click="visible =true"  :hoverable="false"   >注册</a-button>
 <!--          this.$router.push({name:'register'})-->
         </div>
       </div>
@@ -49,6 +49,36 @@
           <a-form-item required field="passport" label="Passport">
             <a-input v-model:model-value="registerForm.passport" />
           </a-form-item>
+          <a-form-item label="Birth Date">
+            <a-date-picker  allow-clear required  v-model="registerForm.birthday" />
+          </a-form-item>
+          <a-form-item label="Gender">
+            <a-radio-group direction="horizontal" required   v-model="registerForm.gender" >
+              <a-radio   v-model="registerForm.gender" label="" value="0" >Male</a-radio>
+              <a-radio  v-model="registerForm.gender" label="" value="1" >Female</a-radio>
+            </a-radio-group>
+          </a-form-item>
+          <a-form-item label="Major">
+            <a-input allow-clear v-model="registerForm.major" required  placeholder="Major"/>
+          </a-form-item>
+          <a-form-item label="Country">
+            <a-input allow-clear v-model="registerForm.country" required  placeholder="Country"/>
+          </a-form-item>
+          <a-form-item label="Phone">
+            <a-input allow-clear v-model="registerForm.phone" required  placeholder="Phone"/>
+          </a-form-item>
+
+          <a-form-item required field="age" label="Age">
+            <a-input-number v-model:model-value="registerForm.age" />
+          </a-form-item>
+          <a-form-item required field="degree" label="Degree">
+              <a-select placeholder="Degree" :model-value="registerForm.degree"  v-model="registerForm.degree" >
+
+                <a-option  label="Chinese" value="0" />
+                <a-option  label="Bsc" value="1" />
+                <a-option  label="Master" value="2" />
+              </a-select>
+          </a-form-item>
           <a-form-item required field="password" label="Password"
                        :rules="[{minLength:6,message:'must be greater than 6 characters'}]"
                        :validate-trigger="['change','input']">
@@ -58,10 +88,10 @@
                        :validate-trigger="['change','input']">
             <a-input-password invisible-button v-model:model-value="registerForm.password2" />
           </a-form-item>
-          <a-form-item required field="code" label="Code">
-            <a-input v-model:model-value="registerForm.code_verif" />
-            <CapchaCodeComponent :width="150" :heigth="30" @click="getCode()"  :captcha="registerForm.code"  />
-          </a-form-item>
+<!--          <a-form-item required field="code" label="Code">-->
+<!--            <a-input v-model:model-value="registerForm.code_verif" />-->
+<!--            <CapchaCodeComponent :width="150" :heigth="30" @click="getCode()"  :captcha="registerForm.code"  />-->
+<!--          </a-form-item>-->
           <a-form-item>
             <a-space size="normal">
               <a-button type="primary" status="normal" html-type="reset" >Reset</a-button>
@@ -122,7 +152,7 @@ export default {
               showMessage(response)
               if (response.code === 2000){
                 store.commit('setuserInfo',response.data)
-                router.push({name:"student_register"})
+                router.push({name:"registration"})
               }
             })
             .catch((response)=>{
@@ -159,15 +189,15 @@ export default {
     const handleBeforeOk = function (values){
       let verification = true
       if(values.errors === undefined){
-        if (registerForm.code_verif!==registerForm.code){
-          registerFormRef.value.setFields({
-            code:{
-              status:"error",
-              message:'Captcha Code Error'
-            }
-          })
-          verification = false
-        }
+        // if (registerForm.code_verif!==registerForm.code){
+        //   registerFormRef.value.setFields({
+        //     code:{
+        //       status:"error",
+        //       message:'Captcha Code Error'
+        //     }
+        //   })
+        //   verification = false
+        // }
         if(registerForm.password !== registerForm.password2){
           registerFormRef.value.setFields({
             password2:{
@@ -237,25 +267,30 @@ export default {
                 })
               }else{
                 store.commit('setuserInfo', response.data)
-                switch (userRole) {
-                    case "ADMIN":
-                      store.commit('setsidebarLinks', supervisorSideBarLinks)
-                        router.push({name:'supervisor_dashboard'})
-                        break
-                    case "STUDENT":
-                      store.commit('setsidebarLinks', studentLinks)
-                      router.push({name:'student_dashboard'})
-                        break
-                    case "TEACHER":
-                      store.commit('setsidebarLinks', teacherSideBarLinks)
-                      router.push({name:'teacher_dashboard'})
-                      break
-                    case "APPLICANT":
-                      setTimeout(args => {
-                        router.push({name:'register'})
-                      }, 800)
-                      break
-                }
+                Message.success({
+                  content:'Connected !'
+                })
+               setTimeout(()=>{
+                 switch (userRole) {
+                   case "ADMIN":
+                     store.commit('setsidebarLinks', supervisorSideBarLinks)
+                     router.push({name:'supervisor_dashboard'})
+                     break
+                   case "STUDENT":
+                     store.commit('setsidebarLinks', studentLinks)
+                     router.push({name:'student_dashboard'})
+                     break
+                   case "TEACHER":
+                     store.commit('setsidebarLinks', teacherSideBarLinks)
+                     router.push({name:'teacher_dashboard'})
+                     break
+                   case "APPLICANT":
+                     setTimeout(args => {
+                       router.push({name:'register'})
+                     }, 800)
+                     break
+                 }
+               },1500)
               }
             }
           })

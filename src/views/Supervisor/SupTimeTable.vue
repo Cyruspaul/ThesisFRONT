@@ -15,7 +15,7 @@
         <a-divider/>
 
           <div class=" mb-5" >
-            <a-tabs default-active-key="1" lazy-load>
+            <a-tabs active-key="1" lazy-load>
               <a-tab-pane key="1" title="连接上传">
                 <a-space size="large" direction="vertical" fill>
                   <a-upload class="border"
@@ -121,7 +121,6 @@ export default {
     submit(form){
       console.log("==============FORM====================")
       console.log(form)
-
     },
     linkSubmit(){
       console.log("==================================")

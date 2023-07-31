@@ -47,6 +47,8 @@ import Application from "@/views/Supervisor/Application";
 import SupClassManagement from "@/views/Supervisor/SupClassManagement";
 import SupGradeList from "@/views/OTHERPAGES/SupGradeList";
 import SupTimeTable from "@/views/Supervisor/SupTimeTable";
+import SupDashboard from "@/views/Supervisor/SupDashboard";
+import RegisterView from "@/views/RegisterView";
 //TEACHER ROUTES
 const teacherRoutes = {
     path: '/jwxt/t',
@@ -166,7 +168,7 @@ const supervisorRoutes = {
         {
             path: 'dashboard',
             name: 'supervisor_dashboard',
-            component: StatisticComp
+            component: SupDashboard
         },
         {
             path: 'course_management',
@@ -402,6 +404,10 @@ const routes = [        {
     path: '/register',
     name: 'register',
     component: StudentRegister
+}, {
+    path: '/registration',
+    name: 'registration',
+    component: RegisterView
 },
     {path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound},
 ].concat(studentRoutes).concat(supervisorRoutes).concat(teacherRoutes)
@@ -442,7 +448,7 @@ router.beforeEach((async (to,from, next) => {
     const role = convertRoleCode(store.getters.getuserInfo.role)
 
     console.log(to)
-    if(to.path === '/' ) //|| to.name === 'register'
+    if(to.path === '/' || to.name === 'registration') //|| to.name === 'register'
         next()
     else{
         if (store.getters.getuserInfo.role === undefined) {

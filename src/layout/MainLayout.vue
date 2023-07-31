@@ -51,8 +51,7 @@
       </a-menu>
     </a-layout-sider>
 
-
-    <a-layout style="height:100%;/* background-color:#ffffff;*/" class="bg-light">
+    <a-layout ref="containerRef" style="height:100%;/* background-color:#ffffff;*/" class="bg-light ">
       <a-layout-header style="height: 60px" class=" bg-white border-0 shadow-sm  mb-4 d-flex justify-content-between align-items-center">
         <div class="d-flex flex-row px-3 justify-content-center align-items-center h-100 brand">
             <img src="https://edu-systembase.oss-cn-beijing.aliyuncs.com/2023/05/21/129d6047fc6e4413be4165f8da5a151ffavicon.jpg"
@@ -78,7 +77,8 @@
           </template>
         </a-dropdown>
       </a-layout-header>
-      <a-layout-content class="px-1 bg-transparent">
+
+      <a-layout-content class="px-1 bg-transparent position-relative">
         <router-view v-slot="{ Component }">
 <!--          <keep-alive>-->
 
@@ -89,12 +89,17 @@
                 </div>
 <!--          </keep-alive>-->
         </router-view>
+
+        <TaskViewer v-if="this.$store.state.currentMessage === undefined" :datas="this.$store.state.currentMessage" />
       </a-layout-content>
+
+
+
+
       <a-layout-footer class=" bg-transparent border-0 d-flex justify-content-center align-items-center p-2">
         <span class="text-muted small m-0">Liu Xue Sheng Jiao Wu Guan li Xi Tong</span>
       </a-layout-footer>
     </a-layout>
-
 
   </a-layout>
 </template>
@@ -105,9 +110,11 @@ import router, {convertRoleCode} from "../router";
 import {Message} from "@arco-design/web-vue";
 import store from "@/store";
 import {studentLinks, supervisorSideBarLinks, teacherSideBarLinks} from "@/router/routerLinks";
+import TaskViewer from "@/components/TaskViewer";
 
 export default {
   name: "MainLayout",
+  components: {TaskViewer},
   data() {
     return {
       defaultSelectedKey: ['dashboard'],

@@ -234,6 +234,10 @@ export default {
     // const formData = {
     //   gmtCreate:''
     // }
+
+
+
+
     const form= ref({
       status: -1,
       majorid: '',
@@ -242,9 +246,9 @@ export default {
       country: '',
       passport: '',
       username: '',
-      age: 10,
+      age: 0,
       phone: '',
-      bthday: "",
+      birthday: "",
       level: '',
       otherinfos: '',
       degree: ''

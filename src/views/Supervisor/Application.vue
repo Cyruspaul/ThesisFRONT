@@ -80,8 +80,8 @@
               <a-descriptions-item label="更新时间"  >{{ form.remarks}}</a-descriptions-item>
             </a-descriptions>
           <a-space class="ms-2 mt-4">
-            <a-button size="large" @click="ValidateEdit(1)" class="px-4" type="primary" status="default" >接受</a-button>
-            <a-button size="large" @click="ValidateEdit(0)" class="px-4" type="primary" status="warning" >拒绝</a-button>
+            <a-button :disabled="form.status===2" size="large" @click="ValidateEdit(1)" class="px-4" type="primary" status="default" >接受</a-button>
+            <a-button :disabled="form.status===2" size="large" @click="ValidateEdit(0)" class="px-4" type="primary" status="warning" >拒绝</a-button>
             <a-button size="large" @click="DeleteOperation" class="px-4" type="primary" status="danger" >删除</a-button>
           </a-space>
         </div>
@@ -161,7 +161,7 @@ export default {
         {
           APPLICATION.deleteOne(this.form.regNum).then(value =>  {
             showMessage(value)
-            location.reload()
+            this.findAll()
           }).catch(reason => showMessage(reason))
         },})
     },
@@ -172,7 +172,7 @@ export default {
             APPLICATION.refuse(this.form.regNum).then(value =>  {
               // location.reload()
               showMessage(value)
-              location.reload()
+              this.findAll()
             }).catch(reason => showMessage(reason))
           }})
       }else if (op === 1 && this.form !== {}){
@@ -181,7 +181,7 @@ export default {
             APPLICATION.accept(this.form.regNum).then(value =>  {
               // location.reload()
               showMessage(value)
-              location.reload()
+              this.findAll()
             }).catch(reason => showMessage(reason))
           }})
       }

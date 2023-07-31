@@ -11,11 +11,9 @@
 
     <a-space :fill="true" class="px-5" direction="vertical" size="large">
 
-      <a-radio-group default-value="all" direction="vertical" size="large" type="button">
-        <a-radio value="all">All</a-radio>
-        <a-radio disabled value="done">Finished</a-radio>
-        <a-radio disabled value="expired">Expired</a-radio>
-      </a-radio-group>
+<!--      <a-radio-group default-value="all" direction="vertical" size="large" type="button">-->
+<!--        <a-radio value="all">All</a-radio>-->
+<!--      </a-radio-group>-->
 
       <div>
         <a-list :max-height="1000" :pagination-props="{'hide-on-single-page':true, defaultPageSize: 10,total:12,}"

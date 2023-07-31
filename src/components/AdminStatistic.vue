@@ -1,4 +1,3 @@
-x
 <template>
   <section class="">
     <a-row :gutter="20" class=" text-start">

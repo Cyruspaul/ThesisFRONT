@@ -126,7 +126,11 @@ export const STUDENT = {
         return http.POST('/api/admin/student/add', data)
     },
 }
-
+export const STATS = {
+    findAll(){
+        return http.GET('/api/admin/stats/get', null)
+    },
+}
 export const ACCOUNT = {
     findAll(){
         return http.GET('/api/admin/account/findAll', null)
@@ -206,6 +210,9 @@ export const APPLICATION = {
     deleteOne(id){
         return http.DELETE('/api/admin/application/logicDelete/'+id)
     },
+    create(studentRegisterForm) {
+        return http.POST('/api/user/applicant/register_new',studentRegisterForm)
+    }
 }
 
 export const COMMENTS = {

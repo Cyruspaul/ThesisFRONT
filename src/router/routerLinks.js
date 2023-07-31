@@ -234,12 +234,12 @@ const supervisorSideBarLinks = [
     //     ]
     // },
 
-    {
-        key: 'supervisor_file_management',
-        title: '文件管理',
-        icon: IconCalendar,
-        subItems: []
-    }
+    // {
+    //     key: 'supervisor_file_management',
+    //     title: '文件管理',
+    //     icon: IconCalendar,
+    //     subItems: []
+    // }
     //     key: 'supervisor_evaluation_management',
     //     title: '评教管理',
     //     icon: IconCalendar,

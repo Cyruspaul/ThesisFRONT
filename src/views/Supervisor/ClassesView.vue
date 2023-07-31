@@ -40,7 +40,7 @@
             <template #columns>
               <a-table-column title="学生学号" data-index="stuNumber" />
               <a-table-column title="学生名称" data-index="stuName" />
-              <a-table-column title="所属学院" data-index="department" />
+              <a-table-column title="国家" data-index="country" />
               <a-table-column title="专业" data-index="major" />
               <a-table-column title="班级" data-index="classId" />
               <a-table-column title="操作" :width="150">
@@ -66,7 +66,6 @@
 <script>
 import MyPageHeader from "@/components/MyPageHeader";
 import {reactive, ref} from "vue";
-import StudentListView from "@/views/Supervisor/StudentListView";
 import {Course, STUDENT, Teacher} from "@/api/admin_API";
 import {Modal} from "@arco-design/web-vue";
 import {showMessage} from "@/utils/DefinedMessageNotification";

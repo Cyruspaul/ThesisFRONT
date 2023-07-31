@@ -15,12 +15,16 @@ const store = createStore({
         },
         routes: markRaw([]),
         baseUrl: '',
-        sidebarLinks:shallowRef([])
+        sidebarLinks:shallowRef([]),
+        currentMessage: undefined
 
     },
     getters: {
         getuserInfo: (state) => {
             return state.userInfo
+        },
+        getcurrentMessage: (state) => {
+            return state.currentMessage
         },
         
         getsidebarLinks: (state) => {
@@ -45,6 +49,9 @@ const store = createStore({
         setbaseUrl: ((state, payload) => {
             state.baseUrl = payload
         }),
+        setcurrentMessage: ((state, payload) => {
+            state.currentMessage = payload
+        }),
         setsidebarLinks: ((state, payload) => {
             state.sidebarLinks = payload
         }),
@@ -64,6 +71,10 @@ const store = createStore({
         cleanRoutes: ((state, payload) => {
             window.sessionStorage.clear()
             state.routes = markRaw([])
+        }),
+        cleancurrentMessage: ((state, payload) => {
+            window.sessionStorage.clear()
+            state.currentMessage = undefined
         }),
         cleanbaseUrl: ((state, payload) => {
             window.sessionStorage.clear()

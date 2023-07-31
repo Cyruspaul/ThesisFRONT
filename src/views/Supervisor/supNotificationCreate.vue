@@ -80,16 +80,16 @@
         发布
       </a-button>
     <div class="container">
-      <a-space fill direction="vertical" size="medium">
-        <div>
+      <a-space fill direction="vertical" size="large">
+        <div class="mb-4">
           <h6 class="fw-bolder">文件</h6>
-          <a-divider direction="horizontal" :margin="0" type="dashed" />
-          <a-link size="large" target="_blank" status="danger" v-if="this.form.alink !== undefined" :href="this.form.alink">
+          <a-divider direction="horizontal" :margin="10" type="dashed" />
+          <a-link size="large" target="_blank" type="text" status="danger"
+             :hoverable="false"     v-if="this.form.alink !== undefined && this.form.alink !== null" :href="this.form.alink">
             <template #icon>
               <icon-file />
             </template>
             点击这下载附件 {{this.form.alink.substring(94)}}
-
           </a-link>
         </div>
         <div>

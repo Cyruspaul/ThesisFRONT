@@ -62,14 +62,14 @@
 
       <div class="container">
         <a-form size="large" :wrapper-col-props="{span:8}" :label-col-props="{span:8}" v-model:model="form" layout="horizontal">
-          <a-form-item label="专业编号" field="id">
-            <a-input placeholder="编号" allow-clear v-model="form.id" />
+          <a-form-item aria-readonly="true" label="专业编号" field="id">
+            <a-input readonly placeholder="编号"  v-model="form.id" />
           </a-form-item>
           <a-form-item  label="专业名称" field="majorName">
-            <a-input placeholder="专业名称" allow-clear v-model="form.majorName" />
+            <a-input placeholder="专业名称"  v-model="form.majorName" />
           </a-form-item>
           <a-form-item  label="学院名称" field="collegeId">
-            <a-select placeholder="学院名称" allow-clear v-model="form.collegeId">
+            <a-select placeholder="学院名称" v-model="form.collegeId">
               <a-option v-for="college in collegeList" :label="college.collegeName" :value="college.collegeNo" />
             </a-select>
           </a-form-item>
